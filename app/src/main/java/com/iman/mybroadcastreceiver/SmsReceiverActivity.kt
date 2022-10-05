@@ -1,7 +1,7 @@
 package com.iman.mybroadcastreceiver
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.iman.mybroadcastreceiver.databinding.ActivitySmsReceiverBinding
 
 class SmsReceiverActivity : AppCompatActivity() {
@@ -18,12 +18,16 @@ class SmsReceiverActivity : AppCompatActivity() {
 
         binding = ActivitySmsReceiverBinding.inflate(layoutInflater)
         setContentView(binding?.root)
+
         title = getString(R.string.incoming_message)
+
         binding?.btnClose?.setOnClickListener {
             finish()
         }
+
         val senderNo = intent.getStringExtra(EXTRA_SMS_NO)
         val senderMessage = intent.getStringExtra(EXTRA_SMS_MESSAGE)
+
         binding?.tvFrom?.text = getString(R.string.from, senderNo)
         binding?.tvMessage?.text = senderMessage
     }
